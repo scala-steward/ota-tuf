@@ -57,6 +57,7 @@ lazy val serverDependencies = libraryDependencies ++= {
   )
 }
 
+
 lazy val commonSettings = Seq(
   organization := "io.github.uptane",
   scalaVersion := "2.12.10",
@@ -101,13 +102,13 @@ lazy val sonarSettings = Seq(
 )
 
 lazy val libtuf = (project in file("libtuf"))
-  .enablePlugins(Versioning.Plugin)
+  .enablePlugins(Versioning.Plugin, BuildInfoPlugin)
   .configs(commonConfigs:_*)
   .settings(commonSettings)
   .settings(Publish.settings)
 
 lazy val libtuf_server = (project in file("libtuf-server"))
-  .enablePlugins(Versioning.Plugin)
+  .enablePlugins(Versioning.Plugin, BuildInfoPlugin)
   .configs(commonConfigs:_*)
   .settings(commonSettings)
   .settings(serverDependencies)
