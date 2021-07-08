@@ -65,7 +65,8 @@ lazy val commonSettings = Seq(
   scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-Xexperimental", "-Ypartial-unification"),
   scalacOptions in (Compile, console) ~= (_.filterNot(_ == "-Ywarn-unused-import")),
   resolvers += Resolver.sonatypeRepo("releases"),
-  libatsVersion := "0.4.0-18-g8d4141f",
+//  libatsVersion := "0.4.0-18-g8d4141f",
+  libatsVersion := "1.0.0",
   licenses += ("MPL-2.0", url("http://mozilla.org/MPL/2.0/")),
   description := "scala tuf implementation support",
   buildInfoOptions += BuildInfoOption.ToMap,
@@ -117,7 +118,6 @@ lazy val keyserver = (project in file("keyserver"))
   .enablePlugins(BuildInfoPlugin, Versioning.Plugin, JavaAppPackaging)
   .configs(commonConfigs:_*)
   .settings(commonSettings)
-  .settings(Publish.disable)
   .settings(Packaging.docker("tuf-keyserver"))
   .settings(serverDependencies)
   .dependsOn(libtuf)
@@ -128,7 +128,6 @@ lazy val reposerver = (project in file("reposerver"))
   .configs(commonConfigs:_*)
   .settings(commonSettings)
   .settings(serverDependencies)
-  .settings(Publish.disable)
   .settings(Packaging.docker("tuf-reposerver"))
   .dependsOn(libtuf)
   .dependsOn(libtuf_server)
