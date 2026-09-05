@@ -1,6 +1,6 @@
 libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0"
 
-libraryDependencies += "org.slf4j" % "slf4j-api" % "2.0.18"
+libraryDependencies += "org.slf4j" % "slf4j-api" % "2.0.19"
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.6.3"
 
